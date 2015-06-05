@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_date: 2015-06-05
+  student_id: 
+
+two:
+  order_date: 2015-06-05
+  student_id: 
