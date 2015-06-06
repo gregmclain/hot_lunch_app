@@ -1,0 +1,6 @@
+<%= form_for([@student, @order]) do |f| %>
+    <div class="field">
+      <%= f.date_select(:order_date,:start_year => 2014) %>
+    </div>
+    <%= f.submit "Save Order", class: "btn btn-primary" %>
+<% end %>

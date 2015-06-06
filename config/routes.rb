@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 
   resources :students
+  resources :student, :has_many => [:orders]
+  resources :orders, only: [:create, :destroy, :show]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
