@@ -16,10 +16,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    student = Student.find(params[:student_id])
+    @order = student.orders.create(order_params)
 
     if @order.save
-      redirect_to @order, notice: 'Order was successfully created.'
+      redirect_to [@order.student, @order], notice: 'Order was successfully created.'
     else
       render :new
     end

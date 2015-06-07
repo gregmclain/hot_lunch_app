@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<tbody>
+<% @menu.items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.category %></td>
+      <td><%= item.description %></td>
+      <td><%= link_to 'Show', item %></td>
+      <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    </tr>
+<% end %>
+</tbody>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Back', menus_path %>
