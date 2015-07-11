@@ -41,6 +41,8 @@ class MenusController < ApplicationController
   def menu_params
    # params.require(:menu).permit(:menu_date, items_attributes: [:name,
     #                                                           :category, :description])
+#    params.require(:goal).permit(milestones_attributes: [milestone_programs_attributes: [program_attributes:[]]])
+
     params.require(:menu).permit!
   end
 end

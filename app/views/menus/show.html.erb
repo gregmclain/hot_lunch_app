@@ -1,16 +1,25 @@
 <p id="notice"><%= notice %></p>
+<table class="table table-striped">
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Category</th>
+</tr>
+</thead>
 
 <tbody>
 <% @menu.items.each do |item| %>
     <tr>
       <td><%= item.name %></td>
-      <td><%= item.category %></td>
       <td><%= item.description %></td>
+      <td><%= item.category %></td>
       <td><%= link_to 'Show', item %></td>
       <td><%= link_to 'Edit', edit_item_path(item) %></td>
     </tr>
 <% end %>
 </tbody>
+  </table>
 
 <%= link_to 'Edit', edit_menu_path(@menu) %> |
 <%= link_to 'Back', menus_path %>

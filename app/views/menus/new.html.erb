@@ -1,12 +1,24 @@
-<%= form_for @menu, html: {class: "form-horizontal"} do |f| %>
-    <fieldset id="menu-items">
-      <ol>
-        <%= f.fields_for :menu_items do |menu_item| %>
-            <%= render 'menu_item_fields', f: menu_item %>
+<%= form_for setup_menu(@menu), html: {class: "form-horizontal"} do |f| %>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :items do |item| %>
+      <tr>
+            <td><%= item.text_field :name %></td>
+            <td><%= item.text_field :category %></td>
+            <td><%= item.text_field :description %></td>
+      </tr>
         <% end %>
-      </ol>
-      <%= link_to_add_association 'add item', f, :menu_items, 'data-association-insertion-node' => "#menu-items ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|menu_item| menu_item.build_item; menu_item } %>
-    </fieldset>
+      </tbody>
+    </table>
 
     <%= f.submit %>
 <% end %>
