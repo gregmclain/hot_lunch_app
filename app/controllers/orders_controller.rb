@@ -1,26 +1,28 @@
 class OrdersController < ApplicationController
+  before_action :set_student
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all
+    @orders = @student.orders.all
   end
 
   def show
+    @order = @student.orders.find(params[:id])
   end
 
   def new
-    @order = Order.new
+    @order = @student.orders.new
+    @menu = Menu.find(15)
   end
 
   def edit
   end
 
   def create
-    student = Student.find(params[:student_id])
-    @order = student.orders.create(order_params)
+    @order = @student.orders.new(params[:order])
 
     if @order.save
-      redirect_to [@order.student, @order], notice: 'Order was successfully created.'
+      redirect_to [@student, @order], notice: 'Order was successfully created.'
     else
       render :new
     end
@@ -38,9 +40,14 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def set_student
+    @student = Student.find(params[:student_id])
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
     params.require(:order).permit(:order_date, :student_id)
   end
+
 end
 
