@@ -1,11 +1,15 @@
 <%= form_for([@student, @order]) do |f| %>
 
-        <% @menu.items.each do |menu_item| %>
-            <% #f.check_box(menu_item.name, menu_item.id) %>
+    <div id="order-date-select">
+      <%= date_select :order, :order_date, {}, :onchange => "loadMenu()" %>
+    </div>
 
-            <h1>SUCCESS!</h1>
-        <% end %>
+    <div class="menu-info">
+      <%= render 'menu_info' %>
+    </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
+
 <% end %>

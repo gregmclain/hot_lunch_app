@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = @student.orders.new(params[:order])
+    @order = @student.orders.new(order_params)
 
     if @order.save
       redirect_to [@student, @order], notice: 'Order was successfully created.'
@@ -29,9 +29,28 @@ class OrdersController < ApplicationController
   end
 
   def update
+    # make sure that item_ids are in the param hash even if none of the checkboxes are checked
+    params[:order][:item_ids] ||= []
   end
 
   def destroy
+  end
+
+  def menu_info
+    # Create a blank order for the form to default the checkboxes
+    @order = Order.new
+
+    @date = Date.new params[:year].to_i, params[:month].to_i, params[:day].to_i
+
+    @menu = Menu.find_by(:menu_date => @date)
+
+    # renders the given partial with the menu found above and returns in JSON format
+    render json: {
+               content: render_to_string({
+                                             partial: 'menu_info',
+                                             layout: nil
+                                         })
+           }
   end
 
   private
@@ -46,7 +65,8 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:order_date, :student_id)
+    #params.require(:order).permit(:order_date, :student_id)
+    params.require(:order).permit!
   end
 
 end
