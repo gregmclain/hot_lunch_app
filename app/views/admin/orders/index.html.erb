@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing All Orders</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Student Name</th>
+    <th>Student Grade</th>
+    <th>Date</th>
+    <th>Main</th>
+    <th>Side</th>
+    <th>Dessert</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.student.name %></td>
+        <td><%= order.student.grade %></td>
+        <td><%= order.order_date %></td>
+        <% order.items.each do |order_item| %>
+            <td><%= order_item.name %></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  Download:
+  <%= link_to "CSV", admin_orders_path(format: "csv") %>
+</p>

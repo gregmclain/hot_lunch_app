@@ -17,7 +17,9 @@ function getOrderDay(){
 }
 
 function loadMenu() {
-    $.getJSON('/menu_info?student_id=1&&year=' + getOrderYear() + '&&month=' + getOrderMonth() + '&&day='+ getOrderDay(), function (result) {
+    $.getJSON('/menu_info',
+              { day: getOrderDay(), month: getOrderMonth(), year: getOrderYear(), student_id: 1},
+            function (result) {
             $('.menu-info').html(result.content)
         }
     )

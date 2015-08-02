@@ -37,10 +37,9 @@ class OrdersController < ApplicationController
   end
 
   def menu_info
-    # Create a blank order for the form to default the checkboxes
-    @order = Order.new
-
     @date = Date.new params[:year].to_i, params[:month].to_i, params[:day].to_i
+
+    @order = Order.find_by(:order_date => @date) || Order.new
 
     @menu = Menu.find_by(:menu_date => @date)
 
