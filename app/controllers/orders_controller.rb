@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = @student.orders.new
-    @menu = Menu.find(15)
+    @menu = Menu.find_by(:menu_date => Date.today)
   end
 
   def edit
@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
   def menu_info
     @date = Date.new params[:year].to_i, params[:month].to_i, params[:day].to_i
 
+    #TODO: modify find_by to use student ID as well.
     @order = Order.find_by(:order_date => @date) || Order.new
 
     @menu = Menu.find_by(:menu_date => @date)
