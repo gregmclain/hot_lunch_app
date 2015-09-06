@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
+  before_filter :authenticate_user!
+
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:show, :edit, :update, :destroy]
 
   # GET /students
   # GET /students.json
@@ -11,7 +14,6 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
     @order = Order.new(student_id: @student.id)
-    @menu = Menu.find(14)
   end
 
   # GET /students/new
@@ -26,7 +28,7 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(student_params)
+    @student = current_user.students.build(student_params)
 
     respond_to do |format|
       if @student.save
@@ -73,4 +75,9 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:name, :grade)
     end
+
+  def correct_user
+    @student = current_user.students.find_by(id: params[:id])
+    redirect_to root_url if @student.nil?
+  end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'users/new'
+  resources :users
 
   get 'static_pages/home'
 

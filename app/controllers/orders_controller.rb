@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!
+
   before_action :set_student
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user
 
   def index
     @orders = @student.orders.all
@@ -67,6 +70,11 @@ class OrdersController < ApplicationController
   def order_params
     #params.require(:order).permit(:order_date, :student_id)
     params.require(:order).permit!
+  end
+
+  def correct_user
+    @student = current_user.students.find_by(id: params[:student_id])
+    redirect_to root_url if @student.nil?
   end
 
 end

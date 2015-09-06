@@ -3,4 +3,9 @@ class UsersController < ApplicationController
 
   def new
   end
+
+  def show
+    @students = current_user.students
+  end
+
 end
