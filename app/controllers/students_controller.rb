@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    @order = Order.new(student_id: @student.id)
+    @menus = Menu.all
   end
 
   # GET /students/new

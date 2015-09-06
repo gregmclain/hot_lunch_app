@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = @student.orders.new
-    @menu = Menu.find_by(:menu_date => Date.today)
+    @menu = Menu.find_by(:menu_date => params[:menu_date])
   end
 
   def edit
