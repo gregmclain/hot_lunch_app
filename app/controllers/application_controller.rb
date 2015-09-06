@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
   current_user
   end
 
-  def validate_user(object)
-    redirect_to root_path unless current_user.try(:id) == object.try(:user_id)
+  def admin_user
+    redirect_to root_url unless current_user.admin?
   end
-
 end
