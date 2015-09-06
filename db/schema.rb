@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150906031726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150906031726) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "orders", ["student_id"], name: "index_orders_on_student_id"
+  add_index "orders", ["student_id"], name: "index_orders_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 20150906031726) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
