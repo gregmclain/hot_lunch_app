@@ -10,50 +10,43 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = @student.orders.find(params[:id])
   end
 
   def new
     @order = @student.orders.new
-    @menu = Menu.find_by(:menu_date => params[:menu_date])
+    @order.order_date = params[:menu_date]
+    @menu = Menu.find_by(menu_date: params[:menu_date])
   end
 
   def edit
+    @menu = Menu.find_by(menu_date: @order.order_date)
   end
 
   def create
     @order = @student.orders.new(order_params)
 
-    if @order.save
-      redirect_to [@student, @order], notice: 'Order was successfully created.'
+    if params[:order][:item_ids].blank?
+      redirect_to new_student_order_path(@student, :menu_date => @order.order_date), notice: 'No items were selected.'
+    elsif @order.save
+      redirect_to @student, notice: 'Order was successfully created.'
     else
       render :new
     end
   end
 
   def update
-    # make sure that item_ids are in the param hash even if none of the checkboxes are checked
-    params[:order][:item_ids] ||= []
+    if params[:order][:item_ids].blank?
+       destroy
+    elsif @order.update_attributes(order_params)
+      redirect_to @student, notice: 'Order was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
-  end
-
-  def menu_info
-    @date = Date.new params[:year].to_i, params[:month].to_i, params[:day].to_i
-
-    #TODO: modify find_by to use student ID as well.
-    @order = Order.find_by(:order_date => @date) || Order.new
-
-    @menu = Menu.find_by(:menu_date => @date)
-
-    # renders the given partial with the menu found above and returns in JSON format
-    render json: {
-               content: render_to_string({
-                                             partial: 'menu_info',
-                                             layout: nil
-                                         })
-           }
+    Order.find(params[:id]).destroy
+    redirect_to @student, notice: 'Order was deleted.'
   end
 
   private

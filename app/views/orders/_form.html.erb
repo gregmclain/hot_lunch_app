@@ -1,9 +1,7 @@
 <%= form_for([@student, @order]) do |f| %>
 
-    <div id="order-date-select">
-      <%= date_select :order, :order_date, {}, :onchange => "loadMenu()" %>
-    </div>
-
+    <p id="order-date"><%= @order.order_date %></p>
+    <%= f.hidden_field :order_date, :value => @order.order_date %>
     <div class="menu-info">
       <%= render 'menu_info' %>
     </div>

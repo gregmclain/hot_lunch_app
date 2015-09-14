@@ -14,10 +14,11 @@
 <%= link_to 'Back', current_user %>
 
 <% @menus.each do |menu| %>
-    <% if Order.find_by(student_id: @student.id, order_date: menu.menu_date).nil? %>
+    <% order = Order.find_by(student_id: @student.id, order_date: menu.menu_date) %>
+    <% if order.nil? %>
         <%= link_to "#{menu.menu_date}", new_student_order_path(@student, :menu_date => menu.menu_date), class: "btn btn-lg btn-primary"  %>
     <% else %>
-        <%= link_to "#{menu.menu_date}", new_student_order_path(@student, :menu_date => menu.menu_date), class: "btn btn-lg btn-success"  %>
+        <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order, :menu_date => menu.menu_date), class: "btn btn-lg btn-success"  %>
     <% end %>
 <% end %>
 
