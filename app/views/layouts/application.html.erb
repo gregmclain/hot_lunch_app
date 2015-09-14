@@ -13,15 +13,27 @@
 <body>
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Tropical Oasis", '#', id: "logo" %>
+    <%= link_to "Tropical Oasis", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",   root_path %></li>
         <% if user_signed_in? %>
             <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+            <% if current_user.admin? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Admin <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Orders", admin_orders_path %></li>
+                    <li><%= link_to "Menus", menus_path %></li>
+                  </ul>
+                </li>
+            <% end %>
         <% else %>
             <li><%= link_to "Log in", new_user_session_path %></li>
       <% end %>
+
       </ul>
     </nav>
   </div>
