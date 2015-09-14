@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @students = current_user.students
+    @students = current_user.students.order('first_name ASC')
   end
 
 end

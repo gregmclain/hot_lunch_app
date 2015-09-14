@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @student.name %>
+  <strong>First Name:</strong>
+  <%= @student.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @student.last_name %>
 </p>
 
 <p>
@@ -21,7 +26,4 @@
         <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order, :menu_date => menu.menu_date), class: "btn btn-lg btn-success"  %>
     <% end %>
 <% end %>
-
-<%= link_to "Orders", student_orders_path(@student), class: "btn btn-lg btn-primary" %>
-
 

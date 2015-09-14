@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>Name</th>
@@ -9,13 +9,12 @@
   <tbody>
   <% @students.each do |student| %>
       <tr>
-        <td><%= student.name %></td>
-        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to "#{student.first_name} #{student.last_name}", student, class: "btn btn-lg btn-primary" %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Student', new_student_path %>
+<%= link_to "New Student", new_student_path, class: "btn btn-lg btn-primary" %>

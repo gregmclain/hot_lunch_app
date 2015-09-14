@@ -5,11 +5,11 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Student Name</th>
-    <th>Student Grade</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Grade</th>
     <th>Date</th>
-    <th>Main</th>
-    <th>Side</th>
+    <th>Entree</th>
     <th>Dessert</th>
   </tr>
   </thead>
@@ -17,7 +17,8 @@
   <tbody>
   <% @orders.each do |order| %>
       <tr>
-        <td><%= order.student.name %></td>
+        <td><%= order.student.first_name %></td>
+        <td><%= order.student.last_name %></td>
         <td><%= order.student.grade %></td>
         <td><%= order.order_date %></td>
         <% order.items.each do |order_item| %>

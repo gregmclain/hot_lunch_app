@@ -1,8 +1,9 @@
 class StudentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :correct_user,   only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index]
 
   # GET /students
   # GET /students.json
@@ -60,7 +61,7 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+      format.html { redirect_to current_user, notice: 'Student was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -68,12 +69,14 @@ class StudentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
-      @student = Student.find(params[:id])
+      @student = Student.find_by_id(params[:id])
+
+      redirect_to current_user if @student.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :grade)
+      params.require(:student).permit(:first_name,:last_name, :grade)
     end
 
   def correct_user
