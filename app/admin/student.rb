@@ -30,4 +30,10 @@ ActiveAdmin.register Student do
   filter :grade
   filter :user
 
+  csv do
+    column :first_name
+    column :last_name
+    column :grade
+  end
+
 end

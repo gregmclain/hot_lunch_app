@@ -250,6 +250,11 @@ ActiveAdmin.setup do |config|
   #
   #   end
 
+  config.namespace :admin do |admin|
+    # Only show XML & PDF options
+    admin.download_links = [:csv]
+  end
+
   # == Pagination
   #
   # Pagination is enabled by default for all resources.

@@ -13,5 +13,11 @@ ActiveAdmin.register Order do
 #   permitted
 # end
 
+  show do |order|
+    attributes_table :id, :order_date
+    order.items.each do |item|
+      h3 item.name
+    end
+  end
 
 end
