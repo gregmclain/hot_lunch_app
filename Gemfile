@@ -12,6 +12,7 @@ gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
 gem 'devise'
 gem 'pg'
+gem 'activeadmin', github: 'activeadmin'
 
 
 group :development, :test do

@@ -5,4 +5,6 @@ class Item < ActiveRecord::Base
 
   has_many :menu_items, dependent:   :destroy
   has_many :menus, through: :menu_items
+
+  validates :name,  presence: true
 end
