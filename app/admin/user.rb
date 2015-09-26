@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+    column :admin
     column :created_at
     column :updated_at
     actions
