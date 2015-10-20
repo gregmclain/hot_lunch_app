@@ -12,21 +12,17 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Category</th>
+    <th>Main</th>
+    <th>Side</th>
+    <th>Dessert</th>
   </tr>
   </thead>
 
   <tbody>
-  <% @order.items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= item.category %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= @order.main %></td>
+        <td><%= @order.side %></td>
+        <td><%= @order.dessert %></td>
       </tr>
-  <% end %>
   </tbody>
 </table>
