@@ -20,4 +20,37 @@ ActiveAdmin.register Order do
     end
   end
 
+  index do
+    selectable_column
+    id_column
+    column "First Name" do |order| order.student.first_name if order.student end
+    column "Last Name" do |order| order.student.last_name if order.student end
+    column "Grade" do |order| order.student.grade if order.student end
+    column :order_date
+    column :main_quantity
+    column :main
+    column :side
+    column :dessert
+    actions
+  end
+
+  #filter :first_name
+  #filter :last_name
+  #filter :grade
+  filter :order_date
+  filter :main
+  filter :side
+  filter :dessert
+
+  csv do
+    #column "First Name"
+    #column "Last Name"
+    #column "Grade"
+    column :order_date
+    column :main_quantity
+    column :main
+    column :side
+    column :dessert
+  end
+
 end
