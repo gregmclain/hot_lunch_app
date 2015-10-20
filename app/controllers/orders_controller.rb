@@ -16,16 +16,18 @@ class OrdersController < ApplicationController
     @order = @student.orders.new
     @order.order_date = params[:menu_date]
     @menu = Menu.find_by(menu_date: params[:menu_date])
+    set_menu_items
   end
 
   def edit
     @menu = Menu.find_by(menu_date: @order.order_date)
+    set_menu_items
   end
 
   def create
     @order = @student.orders.new(order_params)
 
-    if params[:order][:item_ids].blank?
+    if params.has_key?(:main)
       redirect_to new_student_order_path(@student, :menu_date => @order.order_date), notice: 'No items were selected.'
     elsif @order.save
       redirect_to @student, notice: 'Order was successfully created.'
@@ -35,7 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if params[:order][:item_ids].blank?
+    if params.has_key?(:main)
        destroy
     elsif @order.update_attributes(order_params)
       redirect_to @student, notice: 'Order was successfully updated.'
@@ -68,6 +70,12 @@ class OrdersController < ApplicationController
   def correct_user
     @student = current_user.students.find_by(id: params[:student_id])
     redirect_to root_url if @student.nil?
+  end
+
+  def set_menu_items
+    @main_dishes = @menu.items.select{|item| item.category == "Main" }
+    @sides = @menu.items.select{|item| item.category == "Side" }
+    @desserts = @menu.items.select{|item| item.category == "Dessert" }
   end
 
 end

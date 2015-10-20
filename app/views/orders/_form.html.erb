@@ -3,7 +3,37 @@
     <p id="order-date"><%= @order.order_date %></p>
     <%= f.hidden_field :order_date, :value => @order.order_date %>
     <div class="menu-info">
-      <%= render 'menu_info' %>
+      <% unless @menu.blank? %>
+
+          <p>Main</p>
+          <%= f.radio_button :main_quantity, "1", :checked=> (@order.main_quantity == 1) %>
+          <%= f.label  :main_quantity, "1" %>
+          <%= f.radio_button :main_quantity, "2", :checked=> (@order.main_quantity == 2) %>
+          <%= f.label  :main_quantity, "2" %>
+          <% @main_dishes.each do |menu_item| %>
+              <div>
+                <%= f.radio_button :main, menu_item.name, :checked=> (@order.main == menu_item.name) %>
+                <%= f.label :main, menu_item.name %>
+              </div>
+          <% end %>
+
+          <p>Side</p>
+          <% @sides.each do |menu_item| %>
+              <div>
+                <%= f.radio_button :side, menu_item.name, :checked=> (@order.side == menu_item.name) %>
+                <%= f.label :side, menu_item.name %>
+              </div>
+          <% end %>
+
+          <p>Dessert</p>
+          <% @desserts.each do |menu_item| %>
+              <div>
+                <%= f.radio_button :dessert, menu_item.name, :checked=> (@order.dessert == menu_item.name) %>
+                <%= f.label :dessert, menu_item.name %>
+              </div>
+          <% end %>
+
+      <% end %>
     </div>
 
     <div class="actions">

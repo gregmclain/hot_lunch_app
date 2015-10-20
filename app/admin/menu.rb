@@ -25,8 +25,8 @@ ActiveAdmin.register Menu do
       f.input :menu_date
     end
     f.inputs "Menu Items" do
-      f.has_many :items do |s|
-        s.input :name, as: :select, :include_blank => true, collection: Item.all.map{|u| ["#{u.name}", u.name]}
+      f.has_many :menu_items do |s|
+        s.input :item_id, as: :select, :include_blank => true, collection: Item.all.map{|u| ["#{u.name}", u.id]}
       end
     end
     f.actions
