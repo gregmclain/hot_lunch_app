@@ -30,8 +30,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = @student.orders.new(order_params)
+    @order.calculate_and_store_price
 
-    if params.has_key?(:main)
+    if params.has_key?(:entree)
       redirect_to new_student_order_path(@student, :menu_date => @order.order_date), notice: 'No items were selected.'
     elsif @order.save
       redirect_to @student, notice: 'Order was successfully created.'
@@ -41,7 +42,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if params.has_key?(:main)
+    @order.calculate_and_store_price
+    if params.has_key?(:entree)
        destroy
     elsif @order.update_attributes(order_params)
       redirect_to @student, notice: 'Order was successfully updated.'
@@ -77,7 +79,7 @@ class OrdersController < ApplicationController
   end
 
   def set_menu_items
-    @main_dishes = @menu.items.select{|item| item.category == "Main" }
+    @entrees = @menu.items.select{|item| item.category == "Entree" }
     @sides = @menu.items.select{|item| item.category == "Side" }
     @desserts = @menu.items.select{|item| item.category == "Dessert" }
   end

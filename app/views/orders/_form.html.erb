@@ -5,15 +5,15 @@
     <div class="menu-info">
       <% unless @menu.blank? %>
 
-          <p>Main</p>
-          <%= f.radio_button :main_quantity, "1", :checked=> (@order.main_quantity == 1) %>
-          <%= f.label  :main_quantity, "1" %>
-          <%= f.radio_button :main_quantity, "2", :checked=> (@order.main_quantity == 2) %>
-          <%= f.label  :main_quantity, "2" %>
-          <% @main_dishes.each do |menu_item| %>
+          <p>Entree</p>
+          <%= f.radio_button :entree_quantity, "1", :checked=> (@order.entree_quantity == 1) %>
+          <%= f.label  :entree_quantity, "1" %>
+          <%= f.radio_button :entree_quantity, "2", :checked=> (@order.entree_quantity == 2) %>
+          <%= f.label  :entree_quantity, "2" %>
+          <% @entrees.each do |menu_item| %>
               <div>
-                <%= f.radio_button :main, menu_item.name, :checked=> (@order.main == menu_item.name) %>
-                <%= f.label :main, menu_item.name %>
+                <%= f.radio_button :entree, menu_item.name, :checked=> (@order.entree == menu_item.name) %>
+                <%= f.label :entree, menu_item.name %>
               </div>
           <% end %>
 

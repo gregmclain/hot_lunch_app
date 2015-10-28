@@ -7,6 +7,14 @@ class Order < ActiveRecord::Base
                                 :reject_if => :all_blank,
                                 :allow_destroy => true
 
+  def calculate_and_store_price
+    if self.entree_quantity == 2
+      self.price = 5.75
+    else
+      self.price = 4.75
+    end
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

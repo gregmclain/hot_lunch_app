@@ -13,6 +13,16 @@ ActiveAdmin.register Item do
 #   permitted
 # end
 
+  form do |f|
+    f.inputs "Item" do
+      f.input :name
+      f.input :description
+      f.input :category, as: :select, collection: ['Entree', 'Side', 'Dessert']
+    end
+
+    f.actions
+  end
+
   controller do
     def permitted_params
       #params.permit(:blog => [:name, :description])
