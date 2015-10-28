@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @menu = Menu.find_by(menu_date: params[:menu_date])
     set_menu_items
     if @order.order_date.month == Date.today.month
-      #redirect_to @student, notice: 'Ordering is complete for this month.'
+      redirect_to @student, notice: 'Ordering is complete for this month.'
     end
   end
 
@@ -42,6 +42,7 @@ class OrdersController < ApplicationController
   end
 
   def update
+    @order.assign_attributes(order_params)
     @order.calculate_and_store_price
     if params.has_key?(:entree)
        destroy

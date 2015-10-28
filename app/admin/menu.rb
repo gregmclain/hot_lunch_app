@@ -22,7 +22,7 @@ ActiveAdmin.register Menu do
 
   form do |f|
     f.inputs "Menu" do
-      f.input :menu_date
+      f.input :menu_date, as: :date_picker, :input_html => { :value => Date.today.at_beginning_of_month.next_month}
     end
     f.inputs "Menu Items" do
       f.has_many :menu_items do |s|
