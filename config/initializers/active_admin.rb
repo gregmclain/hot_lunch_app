@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Hot Lunch App"
+  config.site_title = "Tropical Oasis"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -49,7 +49,7 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
       menu.add  :label  => proc{ current_user.email },
-                :url    =>  proc{  admin_user_path(current_user) }  ,
+                :url    =>  proc{ user_path(current_user) }  ,
                 :id     => 'current_user'
       admin.add_logout_button_to_menu menu
     end
@@ -121,7 +121,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'dashboard#index'
+  config.root_to = 'orders#index'
 
   # == Admin Comments
   #
@@ -159,7 +159,7 @@ ActiveAdmin.setup do |config|
   # To understand how to localize your app with I18n, read more at
   # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
   #
-  config.localize_format = :long
+  config.localize_format = :short
 
   # == Setting a Favicon
   #

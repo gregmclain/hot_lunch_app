@@ -13,6 +13,8 @@ ActiveAdmin.register Menu do
 #   permitted
 # end
 
+  menu priority: 2
+
   show do |menu|
     attributes_table :id, :menu_date
     menu.items.each do |item|

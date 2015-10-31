@@ -22,23 +22,15 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Order</th>
-    <th>Price</th>
+    <th>Month</th>
   </tr>
   </thead>
 
   <tbody>
-  <% @menus.each do |menu| %>
-      <% order = Order.find_by(student_id: @student.id, order_date: menu.menu_date) %>
+  <% @months.each do |month| %>
       <tr>
-      <% if order.nil? %>
-         <td> <%= link_to "#{menu.menu_date}", new_student_order_path(@student, :menu_date => menu.menu_date), class: "btn btn-lg btn-primary"  %> </td>
-         <td>0.00</td>
-      <% else %>
-         <td> <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order, :menu_date => menu.menu_date), class: "btn btn-lg btn-success"  %> </td>
-        <td><%= order.price %></td>
-      <% end %>
-    </tr>
+        <td> <%= link_to "#{month}", student_path(@student, :month => Date::MONTHNAMES.index(month)), class: "btn btn-lg btn-primary"  %> </td>
+      </tr>
   <% end %>
   </tbody>
 </table>

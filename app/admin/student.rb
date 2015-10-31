@@ -20,13 +20,11 @@ ActiveAdmin.register Student do
     column :last_name
     column :grade
     column :user
-    column :created_at
-    column :updated_at
     actions
   end
 
-  filter :first_name
-  filter :last_name
+  filter :first_name_cont, label: 'First Name'
+  filter :last_name_cont, label: 'Last Name'
   filter :grade
   filter :user
 

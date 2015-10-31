@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @order.order_date = params[:menu_date]
     @menu = Menu.find_by(menu_date: params[:menu_date])
     set_menu_items
-    if @order.order_date.month == Date.today.month
+    if @order.order_date.month == Date.today.month || @order.order_date < Date.today
       redirect_to @student, notice: 'Ordering is complete for this month.'
     end
   end
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
   end
 
   def check_date_range
-    if @order.order_date.month == Date.today.month
+    if @order.order_date.month == Date.today.month || @order.order_date < Date.today
       redirect_to student_order_path(@student, @order)
     end
   end

@@ -11,10 +11,13 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  # GET /students/1
-  # GET /students/1.json
   def show
-    @menus = Menu.all
+    if params.has_key?(:month)
+      @menus = Menu.where('extract(month from menu_date) = ?', params[:month])
+      render "show_student_month.html.erb"
+    else
+      @months = Menu.all.order(:menu_date).map { |d| d.menu_date.strftime('%B')}.uniq
+    end
   end
 
   # GET /students/new

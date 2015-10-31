@@ -13,6 +13,8 @@ ActiveAdmin.register Order do
 #   permitted
 # end
 
+  menu priority: 1
+
   show do |order|
     attributes_table :id, :order_date
     order.items.each do |item|
@@ -35,13 +37,15 @@ ActiveAdmin.register Order do
     actions
   end
 
-  #filter :first_name
-  #filter :last_name
-  #filter :grade
+
   filter :order_date
-  filter :entree
-  filter :side
-  filter :dessert
+  filter :entree_cont, label: 'Entree'
+  filter :side_cont, label: 'Side'
+  filter :dessert_cont, label: 'Dessert'
+  filter :student_first_name_cont, label: 'First Name'
+  filter :student_last_name_cont, label: 'Last Name'
+  filter :student_grade_eq, label: 'Grade'
+
 
   csv do
     column :name, label: "Name" do |order| "#{order.student.first_name} #{order.student.last_name}" if order.student end
@@ -51,6 +55,13 @@ ActiveAdmin.register Order do
     column :entree
     column :side
     column :dessert
+  end
+
+  controller do
+    def permitted_params
+      #params.permit(:blog => [:name, :description])
+      params.permit! # allow all parameters
+    end
   end
 
 end

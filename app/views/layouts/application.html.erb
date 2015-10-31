@@ -16,13 +16,14 @@
     <%= link_to "Tropical Oasis", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   root_path %></li>
         <% if user_signed_in? %>
+            <li><%= link_to "Home",   user_path(current_user) %></li>
             <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
             <% if current_user.admin? %>
                 <li><%= link_to "Admin", admin_root_path %></li>
             <% end %>
         <% else %>
+            <li><%= link_to "Home",   root_path %></li>
             <li><%= link_to "Log in", new_user_session_path %></li>
       <% end %>
 

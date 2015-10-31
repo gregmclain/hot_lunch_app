@@ -30,6 +30,6 @@ ActiveAdmin.register Item do
     end
   end
 
-  filter :name
-  filter :category
+  filter :name_cont, label: 'Name'
+  filter :category, as: :select, collection: ['Entree', 'Side', 'Dessert']
 end

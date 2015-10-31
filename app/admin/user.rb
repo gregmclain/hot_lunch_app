@@ -23,6 +23,6 @@ ActiveAdmin.register User do
     actions
   end
 
-  filter :email
+  filter :email_cont, label: 'Email'
 
 end
