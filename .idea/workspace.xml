@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b14e3bc-112e-44f2-8a64-9b19667565e8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/admin/dashboard.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/active_admin.rb" afterPath="$PROJECT_DIR$/config/initializers/active_admin.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/item.rb" afterPath="$PROJECT_DIR$/app/admin/item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/menu.rb" afterPath="$PROJECT_DIR$/app/admin/menu.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/order.rb" afterPath="$PROJECT_DIR$/app/admin/order.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/students/show.html.erb" afterPath="$PROJECT_DIR$/app/views/students/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/student.rb" afterPath="$PROJECT_DIR$/app/admin/student.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/students_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/students_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/user.rb" afterPath="$PROJECT_DIR$/app/admin/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="hot_lunch_app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,16 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="student.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/student.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-              <caret line="25" column="19" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="user.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/user.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -79,16 +58,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/menu.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="item.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/item.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,11 +78,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/order.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6122449" vertical-offset="0" max-vertical-offset="1095">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1095">
               <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20151028011845_add_price_to_orders.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20151028011845_add_price_to_orders.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20151028011131_fix_entree_column_name.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20151028011131_fix_entree_column_name.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20151102003024_change_auto_increment_in_tables.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20151102003024_change_auto_increment_in_tables.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32307693" vertical-offset="0" max-vertical-offset="650">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -122,7 +121,7 @@
       <file leaf-file-name="schema.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1455">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1455">
               <caret line="52" column="20" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="20" />
               <folding />
             </state>
@@ -137,8 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/static_pages/home.html.erb" />
-        <option value="$PROJECT_DIR$/db/migrate/20150204025217_create_students.rb" />
         <option value="$PROJECT_DIR$/app/helpers/students_helper.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/concerns/authentication.rb" />
@@ -188,6 +185,8 @@
         <option value="$PROJECT_DIR$/app/admin/user.rb" />
         <option value="$PROJECT_DIR$/app/admin/item.rb" />
         <option value="$PROJECT_DIR$/app/admin/order.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20151102002451_fix_auto_increment_in_tables.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20151102003024_change_auto_increment_in_tables.rb" />
       </list>
     </option>
   </component>
@@ -768,7 +767,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -805,13 +804,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/active_admin.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="622">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.444445" vertical-offset="0" max-vertical-offset="420">
@@ -1022,22 +1014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20151028011131_fix_entree_column_name.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20151028011845_add_price_to_orders.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="650">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/order.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
@@ -1152,14 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="278" max-vertical-offset="1440">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/students/show_student_month.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29363784" vertical-offset="0" max-vertical-offset="613">
@@ -1202,8 +1170,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/order.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6122449" vertical-offset="0" max-vertical-offset="1095">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1095">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20151028011845_add_price_to_orders.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="650">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1455">
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20151028011131_fix_entree_column_name.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20151102003024_change_auto_increment_in_tables.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32307693" vertical-offset="0" max-vertical-offset="650">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
