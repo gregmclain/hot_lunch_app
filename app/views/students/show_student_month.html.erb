@@ -17,10 +17,14 @@
             <td>0.00</td>
         <% else %>
             <td> <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order), class: "btn btn-lg btn-success"  %> </td>
-            <td><%= order.price %></td>
+            <td><%= number_with_precision(order.price, :precision => 2) %></td>
             <td><%= link_to 'Delete', [@student, order], method: :delete %></td>
       <% end %>
       </tr>
   <% end %>
+  <tr>
+    <td>Monthly Total</td>
+    <td><%= number_with_precision(@total, :precision => 2)%></td>
+  </tr>
   </tbody>
 </table>

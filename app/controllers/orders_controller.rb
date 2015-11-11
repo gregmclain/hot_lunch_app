@@ -31,11 +31,11 @@ class OrdersController < ApplicationController
   def create
     @order = @student.orders.new(order_params)
     @order.calculate_and_store_price
-    Order::adjust_orders_for_discount(@student,@order.order_date.month)
 
     if params.has_key?(:entree)
       redirect_to new_student_order_path(@student, :menu_date => @order.order_date), notice: 'No items were selected.'
     elsif @order.save
+      Order::adjust_orders_for_discount(@student,@order.order_date.month)
       redirect_to student_path(@student,:month => @order.order_date.month), notice: 'Order was successfully created.'
     else
       render :new
@@ -45,10 +45,11 @@ class OrdersController < ApplicationController
   def update
     @order.assign_attributes(order_params)
     @order.calculate_and_store_price
-    Order::adjust_orders_for_discount(@student,@order.order_date.month)
+
     if params.has_key?(:entree)
        destroy
     elsif @order.update_attributes(order_params)
+      Order::adjust_orders_for_discount(@student,@order.order_date.month)
       redirect_to student_path(@student,:month => @order.order_date.month), notice: 'Order was successfully updated.'
     else
       render :edit
@@ -58,8 +59,8 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     @month = @order.order_date.month
-    Order::adjust_orders_for_discount(@student,@month)
     @order.destroy
+    Order::adjust_orders_for_discount(@student,@month)
     redirect_to student_path(@student,:month => @month), notice: 'Order was deleted.'
   end
 

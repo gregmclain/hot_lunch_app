@@ -20,8 +20,18 @@ class Order < ActiveRecord::Base
   end
 
   def self.adjust_orders_for_discount(student, month)
-    #@monthly_orders = Order.where('extract(month from order_date) = ? AND student_id = ?', month, student.id)
-    #@monthly_orders.update_all(:price => )
+    monthly_orders = Order.where('extract(month from order_date) = ? AND student_id = ?', month, student.id)
+    monthly_menus = Menu.where('extract(month from menu_date) = ?', month)
+
+    if monthly_menus.size > monthly_orders.size
+      monthly_orders.where(:entree_quantity => 1).update_all(:price => ONE_ENTREE_PRICE)
+      monthly_orders.where(:entree_quantity => 2).update_all(:price => TWO_ENTREE_PRICE)
+    else
+      monthly_orders.where(:entree_quantity => 1).update_all(:price => ONE_ENTREE_PRICE - DAILY_DISCOUNT)
+      monthly_orders.where(:entree_quantity => 2).update_all(:price => TWO_ENTREE_PRICE - DAILY_DISCOUNT)
+    end
+
+
   end
 
   def self.to_csv(options = {})

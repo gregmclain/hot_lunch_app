@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
   def show
     if params.has_key?(:month)
       @menus = Menu.where('extract(month from menu_date) = ?', params[:month])
+      @total = Order.where('extract(month from order_date) = ? AND student_id = ?', params[:month], @student.id).sum(:price)
       render "show_student_month.html.erb"
     else
       @months = Menu.all.order(:menu_date).map { |d| d.menu_date.strftime('%B')}.uniq
