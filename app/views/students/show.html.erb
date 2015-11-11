@@ -1,21 +1,5 @@
-<p id="notice"><%= notice %></p>
+<h1>Orders for <%=@student.first_name%> <%=@student.last_name%></h1>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @student.first_name %>
-</p>
-
-<p>
-  <strong>Last Name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @student.grade %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', current_user %>
 
 

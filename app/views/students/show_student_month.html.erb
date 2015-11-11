@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Back', current_user %>
+<%= link_to 'Back', @student %>
 
 <table class="table table-striped">
   <thead>
@@ -20,7 +18,8 @@
         <% else %>
             <td> <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order), class: "btn btn-lg btn-success"  %> </td>
             <td><%= order.price %></td>
-        <% end %>
+            <td><%= link_to 'Delete', [@student, order], method: :delete %></td>
+      <% end %>
       </tr>
   <% end %>
   </tbody>
