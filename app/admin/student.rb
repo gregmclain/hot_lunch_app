@@ -34,4 +34,10 @@ ActiveAdmin.register Student do
     column :grade
   end
 
+  controller do
+    def permitted_params
+      #params.permit(:blog => [:name, :description])
+      params.permit! # allow all parameters
+    end
+  end
 end

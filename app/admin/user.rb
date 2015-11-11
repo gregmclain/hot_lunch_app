@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-
+  actions :all, :except => [:new]
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -24,5 +24,21 @@ ActiveAdmin.register User do
   end
 
   filter :email_cont, label: 'Email'
+
+  form do |f|
+    f.inputs "User" do
+      f.input :email
+      f.input :admin
+    end
+
+    f.actions
+  end
+
+  controller do
+    def permitted_params
+      #params.permit(:blog => [:name, :description])
+      params.permit! # allow all parameters
+    end
+  end
 
 end
