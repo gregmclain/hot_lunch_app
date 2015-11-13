@@ -22,6 +22,19 @@ ActiveAdmin.register Order do
     end
   end
 
+  form do |f|
+    f.inputs "Order" do
+      f.input :student
+      f.input :order_date
+      f.input :entree_quantity
+      f.input :entree, as: :select, :include_blank => true, collection: Item.where(:category => "Entree").map{|u| ["#{u.name}", u.name]}
+      f.input :side, as: :select, :include_blank => true, collection: Item.where(:category => "Side").map{|u| ["#{u.name}", u.name]}
+      f.input :dessert, as: :select, :include_blank => true, collection: Item.where(:category => "Dessert").map{|u| ["#{u.name}", u.name]}
+      f.input :price
+    end
+    f.actions
+  end
+
   index do
     selectable_column
     id_column
