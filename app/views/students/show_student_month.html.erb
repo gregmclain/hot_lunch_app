@@ -5,6 +5,7 @@
   <tr>
     <th>Order</th>
     <th>Price</th>
+    <th></th>
   </tr>
   </thead>
 
@@ -15,6 +16,7 @@
         <% if order.nil? %>
             <td> <%= link_to "#{menu.menu_date}", new_student_order_path(@student, :menu_date => menu.menu_date), class: "btn btn-lg btn-primary"  %> </td>
             <td>0.00</td>
+            <td></td>
         <% else %>
             <td> <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order), class: "btn btn-lg btn-success"  %> </td>
             <td><%= number_with_precision(order.price, :precision => 2) %></td>
@@ -25,6 +27,9 @@
   <tr>
     <td>Monthly Total</td>
     <td><%= number_with_precision(@total, :precision => 2)%></td>
+    <td></td>
   </tr>
   </tbody>
 </table>
+
+<%= link_to "PDF Invoice", student_path(@student, :month => @month, :format => 'pdf')  %>

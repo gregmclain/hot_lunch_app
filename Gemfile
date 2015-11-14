@@ -13,6 +13,8 @@ gem 'sdoc',         '0.4.0', group: :doc
 gem 'devise'
 gem 'pg'
 gem 'activeadmin', github: 'activeadmin'
+gem 'prawn'
+gem 'prawn-rails'
 
 
 group :development, :test do
