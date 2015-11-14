@@ -38,14 +38,8 @@
   <%= yield %>
   <footer class="footer">
     <small>
-      Thanks for supporting The Tropical Oasis!
+      Thanks for supporting The Tropical Oasis! For questions or issues, please send an email to <%= mail_to "tropicaloasislunches@gmail.com" %>
     </small>
-    <nav>
-      <ul>
-        <li><%= link_to "About",   "#" %></li>
-        <li><%= link_to "Contact", "#" %></li>
-      </ul>
-    </nav>
   </footer>
   <%= debug(params) if Rails.env.development? %>
 </div>
