@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
                                 :reject_if => :all_blank,
                                 :allow_destroy => true
 
+  validates_presence_of :entree_quantity, :entree, :side, :dessert
+
   ONE_ENTREE_PRICE = 4.75
   TWO_ENTREE_PRICE = 5.75
   DAILY_DISCOUNT = 0.25

@@ -32,13 +32,11 @@ class OrdersController < ApplicationController
     @order = @student.orders.new(order_params)
     @order.calculate_and_store_price
 
-    if params.has_key?(:entree)
-      redirect_to new_student_order_path(@student, :menu_date => @order.order_date), notice: 'No items were selected.'
-    elsif @order.save
+    if @order.save
       Order::adjust_orders_for_discount(@student,@order.order_date.month)
       redirect_to student_path(@student,:month => @order.order_date.month), notice: 'Order was successfully created.'
     else
-      render :new
+      redirect_to new_student_order_path(@student, :menu_date => @order.order_date), notice: 'Please select one of each option.'
     end
   end
 
@@ -46,13 +44,11 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_params)
     @order.calculate_and_store_price
 
-    if params.has_key?(:entree)
-       destroy
-    elsif @order.update_attributes(order_params)
+    if @order.update_attributes(order_params)
       Order::adjust_orders_for_discount(@student,@order.order_date.month)
       redirect_to student_path(@student,:month => @order.order_date.month), notice: 'Order was successfully updated.'
     else
-      render :edit
+      redirect_to edit_student_order_path(@student, :menu_date => @order.order_date), notice: 'Please select one of each option.'
     end
   end
 
