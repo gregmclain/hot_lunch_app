@@ -1,5 +1,19 @@
 <%= link_to 'Back', @student %>
 
+<div class="panel panel-default panel-directions">
+  <p class="directions">The price for lunch with 1 entree is $4.75. The price for lunch with 2 entrees is $5.75. If you submit an order
+  for every day of the month, a $0.25 discount will be applied to each of the orders. Once you have completed submission
+  of your orders for the month, please click the "Invoice" link at the bottom of the page to print a payment form for the
+  month. You can submit orders for the month until the first of the month, at which time all orders will be locked. For instance,
+  all orders for December will be locked on December 1st.</p>
+</div>
+<% if @month == 11 %>
+<div class="panel panel-default panel-november">
+  <p class="directions">Since there is only 1 day to order in November, please download the "Invoice" from the December
+  ordering page. It will include the price of the November lunch.</p>
+</div>
+    <% end %>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -14,11 +28,11 @@
       <% order = Order.find_by(student_id: @student.id, order_date: menu.menu_date) %>
       <tr>
         <% if order.nil? %>
-            <td> <%= link_to "#{menu.menu_date}", new_student_order_path(@student, :menu_date => menu.menu_date), class: "btn btn-lg btn-primary"  %> </td>
+            <td> <%= link_to "#{menu.menu_date}", new_student_order_path(@student, :menu_date => menu.menu_date), class: "btn btn-primary"  %> </td>
             <td>0.00</td>
             <td></td>
         <% else %>
-            <td> <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order), class: "btn btn-lg btn-success"  %> </td>
+            <td> <%= link_to "#{menu.menu_date}", edit_student_order_path(@student, order), class: "btn btn-success"  %> </td>
             <td><%= number_with_precision(order.price, :precision => 2) %></td>
             <td><%= link_to 'Delete', [@student, order], method: :delete %></td>
       <% end %>
@@ -26,10 +40,10 @@
   <% end %>
   <tr>
     <td>Monthly Total</td>
-    <td><%= number_with_precision(@total, :precision => 2)%></td>
-    <td></td>
+    <td><%= number_with_precision(@total, :precision => 2)%> </td>
+    <td><% if @month == 12 %>(includes November lunch)<%end%></td>
   </tr>
   </tbody>
 </table>
 
-<%= link_to "PDF Invoice", student_path(@student, :month => @month, :format => 'pdf')  %>
+<%= link_to "Invoice", student_path(@student, :month => @month, :format => 'pdf'), class: "btn btn-lg btn-info"  %>

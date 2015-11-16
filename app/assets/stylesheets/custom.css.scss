@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 .navbar-default {
-  background-color: #006600;
+  background-color: #000000;
   border-color: #E7E7E7;
 }
 
@@ -53,6 +53,22 @@ p {
   line-height: 1.7em;
 }
 
+.panel-directions {
+  background-color:#eaeaea;
+  margin-top:10px;
+}
+
+.panel-november {
+  background-color:#FFC1C1;
+  margin-top:10px;
+}
+
+p.directions {
+  padding: 5px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
 /* header */
 
 #logo {
@@ -64,9 +80,9 @@ p {
   letter-spacing: -1px;
   padding-top: 15px;
   font-weight: bold;
+  text-decoration: none;
   &:hover {
     color: #fff;
-    text-decoration: none;
   }
 }
 
