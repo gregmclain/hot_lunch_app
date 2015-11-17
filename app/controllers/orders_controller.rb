@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = @student.orders.new
+    @order.entree_quantity = 1
     @order.order_date = params[:menu_date]
     @menu = Menu.find_by(menu_date: params[:menu_date])
     set_menu_items
