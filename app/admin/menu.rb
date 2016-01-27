@@ -25,11 +25,13 @@ ActiveAdmin.register Menu do
   form do |f|
     f.inputs "Menu" do
       f.input :menu_date, as: :date_picker, :input_html => { :value => Date.today.at_beginning_of_month.next_month}
-      f.input :item_ids, label: "Items", as: :check_boxes, :multiple => true,
-              collection: Item.order("CASE WHEN category = 'Entree' THEN '1'
-                                      WHEN category = 'Side' THEN '2'
-                                      WHEN category = 'Dessert' THEN '3'
-                                      ELSE category END ASC, name ASC").map{|u| ["#{u.name}", u.id]}
+      f.input :item_ids, label: "Entrees", as: :check_boxes, :multiple => true,
+              collection: Item.where(:category => "Entree").order("name ASC").map{|u| ["#{u.name}", u.id]}
+      f.input :item_ids, label: "Sides", as: :check_boxes, :multiple => true,
+              collection: Item.where(:category => "Side").order("name ASC").map{|u| ["#{u.name}", u.id]}
+      f.input :item_ids, label: "Desserts", as: :check_boxes, :multiple => true,
+              collection: Item.where(:category => "Dessert").order("name ASC").map{|u| ["#{u.name}", u.id]}
+
     end
     f.actions
   end
