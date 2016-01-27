@@ -25,11 +25,7 @@ ActiveAdmin.register Menu do
   form do |f|
     f.inputs "Menu" do
       f.input :menu_date, as: :date_picker, :input_html => { :value => Date.today.at_beginning_of_month.next_month}
-    end
-    f.inputs "Menu Items" do
-      f.has_many :menu_items do |s|
-        s.input :item_id, as: :select, :include_blank => true, collection: Item.all.map{|u| ["#{u.name}", u.id]}
-      end
+      f.input :item_ids, label: "Items", as: :check_boxes, :multiple => true, collection: Item.order('category ASC').map{|u| ["#{u.name}", u.id]}
     end
     f.actions
   end

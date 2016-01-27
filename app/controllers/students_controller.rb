@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
 
   def show
     if params.has_key?(:month)
-      @menus = Menu.where('extract(month from menu_date) = ?', params[:month])
+      @menus = Menu.where('extract(month from menu_date) = ?', params[:month]).order('menu_date ASC')
       @total = Order.where('extract(month from order_date) = ? AND student_id = ?', params[:month], @student.id).sum(:price)
       @november_total = Order.where('extract(month from order_date) = 11 AND student_id = ?', @student.id).sum(:price)
       @month = params[:month].to_i

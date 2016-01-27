@@ -53,6 +53,8 @@ p {
   line-height: 1.7em;
 }
 
+
+
 .panel-directions {
   background-color:#eaeaea;
   margin-top:10px;
@@ -84,6 +86,10 @@ p.directions {
   &:hover {
     color: #fff;
   }
+}
+
+.navbar-options {
+  color: #fff;
 }
 
 @mixin box_sizing {

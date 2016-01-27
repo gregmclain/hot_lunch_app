@@ -33,6 +33,7 @@ class Order < ActiveRecord::Base
       monthly_orders.where(:entree_quantity => 2).update_all(:price => TWO_ENTREE_PRICE - DAILY_DISCOUNT)
     end
 
+    Transaction.update_monthly_charge(student, month)
 
   end
 
