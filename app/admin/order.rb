@@ -31,6 +31,7 @@ ActiveAdmin.register Order do
       f.input :side, as: :select, :include_blank => true, collection: Item.where(:category => "Side").map{|u| ["#{u.name}", u.name]}
       f.input :dessert, as: :select, :include_blank => true, collection: Item.where(:category => "Dessert").map{|u| ["#{u.name}", u.name]}
       f.input :price
+      f.input :notes
     end
     f.actions
   end
@@ -47,6 +48,7 @@ ActiveAdmin.register Order do
     column :side
     column :dessert
     column :price
+    column :notes
     actions
   end
 
@@ -68,6 +70,7 @@ ActiveAdmin.register Order do
     column :entree
     column :side
     column :dessert
+    column :notes
   end
 
   controller do
