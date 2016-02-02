@@ -15,6 +15,7 @@
               <div>
                 <%= f.radio_button :entree, menu_item.name, :checked=> (@order.entree == menu_item.name) %>
                 <%= f.label :entree, menu_item.name %>
+                <div class="item_desc"><%= menu_item.description %></div>
               </div>
           <% end %>
               </div>
@@ -27,6 +28,7 @@
               <div>
                 <%= f.radio_button :side, menu_item.name, :checked=> (@order.side == menu_item.name) %>
                 <%= f.label :side, menu_item.name %>
+                <div class="item_desc"><%= menu_item.description %></div>
               </div>
           <% end %>
             </div>
@@ -39,6 +41,7 @@
               <div>
                 <%= f.radio_button :dessert, menu_item.name, :checked=> (@order.dessert == menu_item.name) %>
                 <%= f.label :dessert, menu_item.name %>
+                <div class="item_desc"><%= menu_item.description %></div>
               </div>
           <% end %>
             </div>
