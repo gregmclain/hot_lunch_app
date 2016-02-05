@@ -43,6 +43,17 @@ ActiveAdmin.register Menu do
     end
   end
 
+  index do
+    selectable_column
+    id_column
+    column :menu_date
+    column "Entrees" do |menu| filter_menu_by_category(menu,'Entree').join(", ") end
+    column "Sides" do |menu| filter_menu_by_category(menu,'Side').join(", ") end
+    column "Desserts" do |menu| filter_menu_by_category(menu,'Dessert').join(", ") end
+    actions
+  end
+
+
   filter :menu_date
   filter :items
 end
