@@ -55,5 +55,5 @@ ActiveAdmin.register Menu do
 
 
   filter :menu_date
-  filter :items
+  filter :items_name_cont, label: "Item Name"
 end
