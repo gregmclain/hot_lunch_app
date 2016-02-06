@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  actions :all, :except => [:new]
+  actions :all
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -29,6 +29,8 @@ ActiveAdmin.register User do
     f.inputs "User" do
       f.input :email
       f.input :admin
+      f.input :password
+      f.input :password_confirmation
     end
 
     f.actions
