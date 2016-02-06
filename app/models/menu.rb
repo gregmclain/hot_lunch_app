@@ -5,4 +5,14 @@ class Menu < ActiveRecord::Base
 
   accepts_nested_attributes_for :items, reject_if: :all_blank
   accepts_nested_attributes_for :menu_items, :allow_destroy => true
+
+  def clone!
+    cloned_menu = self.dup
+    cloned_menu.items = self.items
+
+    cloned_menu.save!
+
+    cloned_menu
+  end
+
 end

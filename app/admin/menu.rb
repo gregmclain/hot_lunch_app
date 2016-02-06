@@ -14,6 +14,16 @@ ActiveAdmin.register Menu do
 # end
 
   menu priority: 2
+  actions :all
+
+  member_action :clone, method: :get do
+    cloned_menu = resource.clone!
+
+    redirect_to edit_admin_menu_path(cloned_menu)
+  end
+
+  action_item(only: :show) { link_to "Make a Copy", clone_admin_menu_path() }
+
 
   show do |menu|
     attributes_table :id, :menu_date
@@ -24,7 +34,7 @@ ActiveAdmin.register Menu do
 
   form do |f|
     f.inputs "Menu" do
-      f.input :menu_date, as: :date_picker, :input_html => { :value => Date.today.at_beginning_of_month.next_month}
+      f.input :menu_date, as: :datepicker
       f.input :item_ids, label: "Entrees", as: :check_boxes, :multiple => true,
               collection: Item.where(:category => "Entree").order("name ASC").map{|u| ["#{u.name}", u.id]}
       f.input :item_ids, label: "Sides", as: :check_boxes, :multiple => true,
@@ -50,7 +60,9 @@ ActiveAdmin.register Menu do
     column "Entrees" do |menu| filter_menu_by_category(menu,'Entree').join(", ") end
     column "Sides" do |menu| filter_menu_by_category(menu,'Side').join(", ") end
     column "Desserts" do |menu| filter_menu_by_category(menu,'Dessert').join(", ") end
-    actions
+    actions defaults: true do |menu|
+      link_to 'Copy', clone_admin_menu_path(menu)
+    end
   end
 
 
