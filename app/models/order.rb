@@ -9,8 +9,8 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :entree_quantity, :entree, :side, :dessert
 
-  ONE_ENTREE_PRICE = 4.75
-  TWO_ENTREE_PRICE = 5.75
+  ONE_ENTREE_PRICE = 4.25
+  TWO_ENTREE_PRICE = 5.25
   DAILY_DISCOUNT = 0.25
 
   def calculate_and_store_price
