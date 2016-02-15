@@ -6,7 +6,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
 
       (Date.today..(1.week.from_now).to_date).each do |date|
-        entrees = Order.where(:order_date => date).group(:entree).count
+        entrees = Order.where(:order_date => date).group(:entree).sum(:entree_quantity)
         sides = Order.where(:order_date => date).group(:side).count
         desserts = Order.where(:order_date => date).group(:dessert).count
         orders = entrees.merge(sides)
