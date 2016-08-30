@@ -32,9 +32,22 @@
       </tr>
   <% end %>
   <tr>
+
+  <% if @milk_order.nil? %>
+        <td> <%= link_to "Milk", new_student_milk_path(@student, :month => @menus.first.menu_date.month), class: "btn btn-primary"  %> </td>
+      <td>0.00</td>
+      <td></td>
+  <% else %>
+      <td> <%= link_to "Milk", edit_student_milk_path(@student, @milk_order), class: "btn btn-success"  %>
+        <%= @milk_order.milk_type %> </td>
+      <td> <%= "#{@day_count} * 0.45 = " %><%= number_with_precision(@milk_total, :precision => 2) %></td>
+      <td><%= link_to 'Delete', [@student, @milk_order], method: :delete %></td>
+  <% end %>
+  </tr>
+  <tr>
     <td>Monthly Total</td>
     <td><%= number_with_precision(@total, :precision => 2)%> </td>
-    <td><% if @month == 12 %>(includes November lunch)<%end%></td>
+    <td></td>
   </tr>
   </tbody>
 </table>

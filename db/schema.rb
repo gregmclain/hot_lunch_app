@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202013653) do
+ActiveRecord::Schema.define(version: 20160830174650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deadlines", force: :cascade do |t|
+    t.integer  "month"
+    t.date     "deadline_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +43,14 @@ ActiveRecord::Schema.define(version: 20160202013653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "milks", force: :cascade do |t|
+    t.integer "month"
+    t.string  "milk_type"
+    t.integer "student_id"
+  end
+
+  add_index "milks", ["student_id"], name: "index_milks_on_student_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -100,4 +115,5 @@ ActiveRecord::Schema.define(version: 20160202013653) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "milks", "students"
 end

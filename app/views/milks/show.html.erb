@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @milk.month %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @milk.milk_type %>
+</p>
+
+<%= link_to 'Edit', edit_student_milk_path(@student, @milk) %> |
+<%= link_to 'Back', student_milks_path(@student) %>

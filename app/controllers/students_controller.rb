@@ -15,9 +15,15 @@ class StudentsController < ApplicationController
     if params.has_key?(:month)
       @menus = Menu.where('extract(month from menu_date) = ?', params[:month]).order('menu_date ASC')
       @total = Order.where('extract(month from order_date) = ? AND student_id = ?', params[:month], @student.id).sum(:price)
-      @november_total = Order.where('extract(month from order_date) = 11 AND student_id = ?', @student.id).sum(:price)
       @month = params[:month].to_i
-      @total += @november_total if @month == 12
+      @milk_order = Milk.where('month = ? AND student_id = ?', params[:month], @student.id).first
+      @day_count = @menus.count
+      if @milk_order.nil?
+        @milk_total = 0.00
+      else
+        @milk_total = @day_count*0.45
+      end
+      @total = @total + @milk_total
       respond_to do |format|
         format.html { render "show_student_month.html.erb" }
         format.pdf { render :layout => false }

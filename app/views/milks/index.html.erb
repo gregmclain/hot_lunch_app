@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Milks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @milks.each do |milk| %>
+      <tr>
+        <td><%= milk.month %></td>
+        <td><%= milk.milk_type %></td>
+        <td><%= link_to 'Show', milk %></td>
+        <td><%= link_to 'Edit', edit_student_milk_path(@student, milk) %></td>
+        <td><%= link_to 'Destroy', milk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New milk', new_student_milk_path(@student) %>

@@ -1,0 +1,20 @@
+<%= form_for([@student, @milk]) do |f| %>
+  <% if @milk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@milk.errors.count, "error") %> prohibited this milk from being saved:</h2>
+      <ul>
+      <% @milk.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :month, :value => @milk.month %>
+  <div class="field">
+    <%= f.label :milk_type %><br>
+    <%= select(:milk, :milk_type, Milk.milk_types, :selected => @milk.milk_type)%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", data: {:disable_with => "Please wait..."} %>
+  </div>
+<% end %>
