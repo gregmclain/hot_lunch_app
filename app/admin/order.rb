@@ -20,7 +20,7 @@ ActiveAdmin.register Order do
     f.inputs "Order" do
       f.input :student, collection: Student.all.order("first_name ASC")
       f.input :order_date, as: :datepicker
-      f.input :entree_quantity, as: :select, collection: [1,2]
+      f.input :entree_quantity, as: :select, collection: [1]
       f.input :entree, as: :select, :include_blank => true, collection: Item.where(:category => "Entree").order("name ASC").map{|u| ["#{u.name}", u.name]}
       f.input :side, as: :select, :include_blank => true, collection: Item.where(:category => "Side").order("name ASC").map{|u| ["#{u.name}", u.name]}
       f.input :dessert, as: :select, :include_blank => true, collection: Item.where(:category => "Dessert").order("name ASC").map{|u| ["#{u.name}", u.name]}
@@ -37,7 +37,6 @@ ActiveAdmin.register Order do
     column "Last Name" do |order| order.student.last_name if order.student end
     column "Grade" do |order| order.student.grade if order.student end
     column :order_date
-    column :entree_quantity
     column :entree
     column :side
     column :dessert
@@ -60,7 +59,6 @@ ActiveAdmin.register Order do
     column :name, label: "Name" do |order| "#{order.student.first_name} #{order.student.last_name}" if order.student end
     column :grade, label: "Grade" do |order| order.student.grade if order.student end
     column :order_date
-    column :entree_quantity
     column :entree
     column :side
     column :dessert

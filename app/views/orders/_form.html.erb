@@ -1,16 +1,13 @@
 <%= form_for([@student, @order]) do |f| %>
 
     <%= f.hidden_field :order_date, :value => @order.order_date %>
+    <%= f.hidden_field :entree_quantity, :value => 1 %>
     <div class="menu-info">
       <% unless @menu.blank? %>
 
           <div class="panel panel-default">
             <div class="panel-heading">Entree</div>
             <div class="panel-body">
-          <%= f.radio_button :entree_quantity, "1", :checked=> (@order.entree_quantity == 1) %>
-          <%= f.label  :entree_quantity, "1" %>
-          <%= f.radio_button :entree_quantity, "2", :checked=> (@order.entree_quantity == 2) %>
-          <%= f.label  :entree_quantity, "2" %>
           <% @entrees.each do |menu_item| %>
               <div>
                 <%= f.radio_button :entree, menu_item.name, :checked=> (@order.entree == menu_item.name) %>
