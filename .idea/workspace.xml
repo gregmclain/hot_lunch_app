@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b14e3bc-112e-44f2-8a64-9b19667565e8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/orders/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/orders/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/order.rb" afterPath="$PROJECT_DIR$/app/admin/order.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/students/show_student_month.html.erb" afterPath="$PROJECT_DIR$/app/views/students/show_student_month.html.erb" />
     </list>
     <ignored path="hot_lunch_app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.04893964" vertical-offset="0" max-vertical-offset="613">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+              <caret line="2" column="118" selection-start-line="2" selection-start-column="118" selection-end-line="2" selection-end-column="118" />
               <folding />
             </state>
           </provider>
@@ -1404,7 +1401,7 @@
     <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04893964" vertical-offset="0" max-vertical-offset="613">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <caret line="2" column="118" selection-start-line="2" selection-start-column="118" selection-end-line="2" selection-end-column="118" />
           <folding />
         </state>
       </provider>
