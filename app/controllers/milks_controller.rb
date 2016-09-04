@@ -11,10 +11,15 @@ class MilksController < ApplicationController
   def new
     @milk = Milk.new
     @milk.month = params[:month]
+    if Deadline.passed_deadline?(@milk.month, Time.current)
+      redirect_to @student, notice: 'Ordering is complete for this month.'
+    end
   end
 
   def edit
-
+    if Deadline.passed_deadline?(@milk.month, Time.current)
+      redirect_to @student, notice: 'Ordering is complete for this month.'
+    end
   end
 
   def create
